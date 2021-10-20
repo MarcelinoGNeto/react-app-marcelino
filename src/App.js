@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Login from './pages/login';
+import Routes from './pages/routes';
 
 
 function App() {
   return (
 
     <div className="App">
-      <Login />
+      <Routes />
     </div>
   );
 }
