@@ -1,20 +1,34 @@
 import * as React from 'react';
-import Button from '@material-ui/core/Button';
+import './styles.css';
 
 const Login = () => {
     return (
-        
-        <div>
-            <div>
-                <input type="Email" />
-                <Button variant="contained" color="primary">
-                    Login
-                </Button>
-            </div>
-            <div>
+        <main class="container">
+            <h2>LOGIN</h2>
+            <form action="">
+                <div class="input-field">
+                    <input type="text" name="email" id="email" 
+                    placeholder="Email" />
+                    <div class="underline"></div>
+                </div>
+                <div class="input-field">
+                    <input type="password" name="password" id="password" 
+                    placeholder="password" />
+                    <div class="underline"></div>
+                </div>
+                <input type="submit" value="LOGIN" />
+                <div class="remember">
+                <input type="checkout" value="x"/>
+                </div>
+                
+            </form>
 
+            <div class="footer">
+                <div class="">       
+                <p>Not a member? <a href="/">Sign up now</a></p>
+                </div>
             </div>
-        </div>
+        </main>
     );
 }
 
