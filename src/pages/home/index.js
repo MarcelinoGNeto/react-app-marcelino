@@ -1,59 +1,35 @@
-import React from "react";
-import './styles.css';
+import React from 'react';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-const Hhome = () => {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+const Routes = [
+    {path: '/', page: <div>Inicial</div>},
+    {path: '/login', page: <div>Login</div>},
+    {path: '/home', page: <div>Home</div>},
+    {path: '/perfil', page: <div>Home</div>},
+    {path: '/cotitulares ', page: <div>Home</div>},
+    {path: '/cotitulares/cadastrar', page: <div>Home</div>},
+    {path: '/nao-encontrado', page: <div>Home</div>},
+
+];
+
+
+const Rotas = () => {
+    return (
+
+        <BrowserRouter>
+            <Switch>
+                {Routes.map((route) => {
+                    return (
+                        <Route key={route.path} path={route.path} exact>
+                            {route.page}
+                        </Route>
+                    );
+                })}
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
-function Home() {
-  return <p>Home</p>;
-}
-
-function About() {
-  return <p>About</p>;
-}
-
-function Users() {
-  return <p>Users</p>;
-}
-
-export default Hhome;
+export default Rotas;

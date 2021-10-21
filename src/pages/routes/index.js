@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Login from '../login';
-
-
+import Basic from '../login';
+//import Rotas from '../home';
 
 const Routes = () => {
     
     return (
-        <Login />
+        <Basic />
+//       <Rotas />
 
 
     );

@@ -1,0 +1,202 @@
+Antes de começar, algumas sugestões:
+- Exercite suas habilidades como Dev em um projeto Scrum. Analise todas as tarefas que precisam ser executadas, e tente destrinchá-las em sub-tarefas. Por exemplo, a tarefa de criação de Login pode ser divida em "Criar fundo em gradiante", "Implementar card principal", "Criar formulário", etc. Marque essas tarefas em um bloco de notas, e vá marcando como concluída ao passo em que for executando.
+- Exercite seus conhecimentos de Git, e mantenha suas branches sempre organizadas e atualizadas.
+
+--------------------------
+
+Crie uma Aplicação Web que utilize o seguinte formato:
+- Criado com Create React App;
+- Pode utilizar NPM ou Yarn, sem restrições;
+- Utilize React Router para direcionamento de rotas;
+- Utilize React Redux para gerenciamento de estado;
+- Utilize React Redux Thunk para integração assíncrona com o React Redux;
+- Utilize React Redux Persist para salvar o gerenciamento de estado localmente;
+- Utilize Axios para executar chamadas de serviços;
+- Utilize c v  como biblioteca de componentes;
+- Utilize Styled Components para estilização de componentes;
+ok - Utilize Formik ou React Hook Forms para criar formulários;
+- Utilize, em maioria, Componentes Funcionais;
+
+Crie um repositório no Github com um nome de sua preferência:
+- Crie uma branch master/main e develop;
+- Suas alterações deverão ser submetidas em branches de feature, e mescladas para a develop utilizando Pull Requests;
+- Submeta suas alterações seguindo padrão de commits (Conventional Commits);
+- Quando concluir uma feature, crie o Pull Request, aprove você mesmo, e me envie o link do Pull Request para avaliação;
+
+Obedecer as seguintes regras:
+- Será uma aplicação de "Internet Banking". Será possível consultar os dados bancários da pessoa logada.
+ok - Limpar o app padrão que o Create React App gera, mantendo apenas os arquivos de Index e App;
+ok - Criar uma pasta /components para armazenar seus componentes globais;
+ok - Criar uma pasta /pages para armazenar suas páginas;
+ok - Criar uma pasta /redux para armazenar suas actions e reducers;
+ok - Criar uma pasta /redux/services para armazenar chamadas de serviços;
+ok - Componentizar sua aplicação ao passo em que ver ser necessário;
+ok - Consultar referências online para inspiração de layout;
+ok - Consultar as documentações das bibliotecas;
+
+--------------------------
+
+Nome da Branch: feature/routes
+
+Deverão existir as seguintes rotas na aplicação:
+
+/ --> Raiz da sua aplicação. Se estiver logado, direciona para /home. Se não estiver logado, direciona para /login.
+/login --> Tela de Login.
+/home --> Tela de Home.
+/perfil --> Tela de Perfil do usuário logado.
+/cotitulares --> Tela de Co-titulares do usuário logado.
+/cotitulares/cadastrar --> Tela de cadastro de um novo Co-titular para o usuário logado.
+/nao-encontrado --> Uma tela padrão para rota não encontrada.
+
+Será necessário criar um arquivo que agregue cada uma das rotas de forma organizada.
+Ou seja, no App.js só existirá um componente chamado "<Routes />".
+Cada página deverá existir em uma página dentro da pasta /pages.
+Criar uma página para cada rota descrita com um conteúdo vazio neste primeiro momento.
+
+--------------------------
+
+Nome da Branch: feature/login
+
+Utilize o Formik ou React Hook Forms no formulário de Login.
+Crie uma tela de Login que se assemelhe a este exemplo: https://colorlib.com/wp/wp-content/uploads/sites/2/login-form-v11.jpg
+Obedecer as seguintes regras:
+OK - O fundo da tela de login deverá ser um gradiente. Cores à escolha do desenvolvedor.
+- O container de Login deverá:
+	ok- Ter uma largura máxima de 550px;
+	ok- Estar centralizado na página automaticamente;
+	ok Conter um ícone/imagem da aplicação;
+	ok- Abaixo dele, o texto "Login";
+	ok- Abaixo do texto "Login", dois inputs: um para usuário, outro para senha;
+	ok - O usuário só é válido se tiver mais de 1 caracter;
+    ok - O usuário só poderá aceitar letras e números, nenhum caracter especial;
+	ok - A senha só é válida se tiver mais de 6 caracteres;
+	ok - A senha só poderá aceitar números, nenhuma letra e nenhum caracter especial;
+	ok - Deverá exibir um erro quando o campo não for preenchido corretamente;
+	ok - Este erro só deve ser exibido quando o campo já foi tocado alguma vez, ou tentou submeter o formulário;
+	- A senha deverá ter um ícone de ocultar/exibir;
+	- Abaixo dos inputs, deverá ter um checkbox de "Lembrar minha senha";
+	ok - Deverá ter um botão de "Login" que seja do mesmo tamanho dos inputs, com bordas arredondadas, e texto centralizado;
+	- O botão "Login" só deve ser habilitado quando os campos forem válidos;
+	- Abaixo do botão "Login", deverá haver um outro botão no formato Link ou Transparente, com a opção "Esqueci minha senha";
+- O botão "Esqueci minha senha" abrirá um Modal no seguinte formato:
+	- Contém um título e texto solicitando ao usuário para preencher seu nome de usuário, que enviaremos um e-mail de recuperação;
+	- Após preencher, deverá ter um botão "Confirmar", que só é habilitado quando o campo está preenchido;
+	- Após confirmar, deverá fechar o Modal, e abrir um Toast avisando que o e-mail foi enviado;
+- O botão "Login" deverá ter o seguinte comportamento ao ser clicado, se os campos forem válidos:
+	- Exibir um Loading no topo de tudo que ocupe a tela toda e desabilite a interação com a tela;
+	- Exibir tal Loading por 3 segundos;
+	- Após isso, carregar a Home;
+	- Dica para o Loading: Criar no App.js, e passar uma função de liga/desliga (na próxima etapa, criaremos um dispatch via Redux dele);
+
+--------------------------
+
+Nome da Branch: feature/redux
+
+Implementar o gerenciamento de estado básico com React Redux.
+Inicialmente, vamos implementar as ações para a tela de Login.
+Instalar as bibliotecas necessárias para o funcionamento do Redux, Redux Thunk e Redux Persist.
+
+Dentro de /redux, criar uma pasta /actions, com o arquivo types.js, exportando constantes das ações:
+	- APP_SHOW_LOADING;
+	- APP_HIDE_LOADING;
+	- LOGIN_DO_FORGOT_PASS;
+	- LOGIN_DO_LOGIN;
+
+Dentro de /redux/actions, criar dois arquivos, AppActions.js e LoginActions.js.
+Dentro de cada arquivo, implementar a função de dispatch de cada ação descrita no types.js, no formato necessário.
+
+APP_SHOW_LOADING deverá exibir o Loading no aplicativo, trocando o valor da variável.
+APP_HIDE_LOADING deverá ocultar o Loading no aplicativo, trocando o valor da variável.
+LOGIN_DO_FORGOT_PASS deverá simular uma espera, exibir o Loading, como se estivesse enviando um e-mail de recuperação de senha, e ocultar o Loading após essa espera (chamar ação de outro Reducer).
+LOGIN_D_LOGIN deverá salvar o usuário e senha logado no estado da aplicação.
+
+Dentro de /redux, criar uma pasta /reducers, com os arquivos AppReducers.js e LoginReducers.js.
+Criar o initialState necessário de cada um, e implementar o switch-case de dispatch padrão do Redux.
+O initialState do AppReducers deverá ter o campo "showLoading", que será um boolean, inicializado com false;
+O initialState do LoginReducers deverá ter o campo "user", que será um objeto com "username" e "password", inicializado com {};
+O initialState do LoginReducers também deverá ter o campo "userSaved", que será um boolean, inicializado com false;
+
+Trocar no Login as formas de chamar o Loading, e as demais rotinas, para disparar essas ações.
+Utilizar o useDispatch do React Redux para disparar as ações, e importar as ações do AppActions e LoginActions.
+
+--------------------------
+
+Nome da Branch: feature/home
+
+Criar uma página Home da sua aplicação semelhante à tela de Conta da Google: https://myaccount.google.com/
+- Contém um Header com:
+	- O título ou logo do App à esquerda;
+	- O ícone do usuário logado à direita
+	- Ao clicar no ícone do usuário, deve exibir um Pop Over com as opções "Perfil" e "Sair".
+	- A opção "Perfil" direcionará para a tela de Perfil. A opção Sair exibirá um Loading por três segundos, e deslogará o usuário, retornando ao Login. Utilizar o Redux, pois o estado da aplicação deve ficar limpo.
+
+- Contém um Conteúdo com:
+	- Uma barra lateral à esquerda com as navegações (Home, Perfil, Co-Titulares)
+	- Deve ter uma foto de perfil centralizada e circular
+	- Deve exibir "Bem-vindo, {username}!" de acordo com o usuário logado (obter do Redux);
+	- O {username} no texto deve estar em uma cor e peso diferente;
+
+O conteúdo principal deve ter quatro Cards em formato de Grid:
+	- Saldo da conta. Se for negativa, ficará vermelho. Senão, ficará verde.
+	- Cartão de crédito e o valor da fatura atual, com o símbolo da MasterCard no canto;
+	- Status da conta, se está ativa, inativa ou inadimplente.
+	- Co-Titulares, exibindo a quantidade cadastrada, e um botão para cadastrar mais.
+
+--------------------------
+
+Nome da Branch: feature/profile
+
+Criar uma página de Perfil do cliente. Layout livre para desenvolvimento. Sugestão: https://help.wprentals.org/wp-content/uploads/2016/01/add-profile-info-as-admin.png
+Deve apenas exibir os seguintes dados:
+	- Nome de usuário;
+	- E-mail de usuário;
+	- Data de Nascimento;
+	- Celular;
+	- Descrição sobre o usuário;
+
+Sugestão de desafio: campo Celular deve receber um número não-formato, e formatar de acordo com uma máscara, como (##) #-####-####
+
+--------------------------
+
+Nome da Branch: feature/co-owners
+
+Criar uma página de Co-Titulares. Layout ao gosto do desenvolvedor.
+Deve exibir uma tabela com a lista de Co-Titulares existentes. A tabela deve ser responsiva.
+Deve ter um botão para cadastrar um novo Co-Titular, que direcionará para a página certa.
+
+--------------------------
+
+Nome da Branch: feature/co-owners-new
+
+Criar uma página para cadastrar um novo Co-Titulares. Layout ao gosto do desenvolvedor.
+Deve conter um formulário com os seguintes campos:
+	- CPF: formatar automaticamente, permitir somente números;
+	- Nome: permitir somente letras;
+	- Data de Nascimento: formatar automaticamente, permitir somente números;
+	- Celular: formatar automaticamente, permitir somente números;
+
+Efetuar a lógica do botão de Confirmação de acordo com a validação dos campos.
+Deve retornar para a página de Co-Titulares com o Co-Titular em exibição.
+Utilizar o Redux para salvar a lista de Co-Titulares no estado da aplicação.
+
+--------------------------
+
+Nome da Branch: feature/services
+
+Criar, dentro de redux/services/, um arquivo para cada abordagem do app (igual aos Reducers), para chamar uma API que irá responder aos chamados.
+A API será entregue para vocês já desenvolvida, com os seguintes endpoints:
+- POST /login
+	- Body terá "username" e "password"
+- GET /profile
+	- Retornará os dados que exibem na tela de Perfil
+-  GET /co-owners
+	- Retornará a lista de co-titulares cadastrados
+
+Utilizar o Axios para consultar. Integrar nas chamadas do Redux, conforme a abordagem do Redux Thunk propõe.
+Alterar as telas necessárias para trocar os mocks pelas chamadas dos serviços.
+
+--------------------------
+
+Nome da Branch: feature/unit-testing
+
+Implemente testes unitários nos seus componentes utilizando Jest e Enzyme.

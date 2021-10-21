@@ -1,35 +1,69 @@
-import * as React from 'react';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './styles.css';
+import Gftlogo from '../../components/Gftlogo';
 
-const Login = () => {
-    return (
+
+const Basic = () => (
+  <div class="cont">
+    <Formik
+      initialValues={{ email: '', password: '' }}
+      validate={values => {
+        const errors = {};
+        if (!values.email) {
+          errors.email = 'Required';
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
+          errors.email = 'Invalid email address';
+        }
+        if (!values.password) {
+          errors.password = 'Required';
+        } else if (
+          !/^[0-9]{7,}$/i.test(values.password)
+        ) {
+          errors.password = 'Invalid password';
+        }
+
+
+        return errors;
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
+    >
+      {({ isSubmitting }) => (
         <main class="container">
-            <h2>LOGIN</h2>
-            <form action="">
-                <div class="input-field">
-                    <input type="text" name="email" id="email" 
-                    placeholder="Email" />
-                    <div class="underline"></div>
-                </div>
-                <div class="input-field">
-                    <input type="password" name="password" id="password" 
-                    placeholder="password" />
-                    <div class="underline"></div>
-                </div>
-                <input type="submit" value="LOGIN" />
-                <div class="remember">
-                <input type="checkout" value="x"/>
-                </div>
-                
-            </form>
-
-            <div class="footer">
-                <div class="">       
-                <p>Not a member? <a href="/">Sign up now</a></p>
-                </div>
+          <Gftlogo />
+          <h2>LOGIN</h2>
+          <Form action="">
+            <div class="input-field">
+              <Field type="email" name="email"  
+              placeholder="Email" />
+              <ErrorMessage name="email" component="div" />
+              <div class="underline"></div>
             </div>
-        </main>
-    );
-}
+            <div class="input-field">
+              <Field type="password" name="password"
+              placeholder="password" />
+              <ErrorMessage name="password" component="div" />
+              <div class="underline"></div>
+            </div>
+            <input type="submit" value="LOGIN" disabled={isSubmitting} />
 
-export default Login;
+          </Form>
+          <div class="footer">
+            <div class="">
+              <p>Not a member? <a href="/home">Sign up now</a></p>
+            </div>
+          </div>
+        </main>
+      )}
+    </Formik>
+  </div>
+);
+
+export default Basic;
