@@ -1,13 +1,11 @@
 import * as React from 'react';
 
-
 const Routes = () => {
-    return (
-        
-        <div>
-
-        </div>
-    );
-}
+  return (
+    <div>
+      <p>Routes</p>
+    </div>
+  );
+};
 
 export default Routes;
