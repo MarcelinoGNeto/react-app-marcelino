@@ -74,7 +74,7 @@ OK - O fundo da tela de login deverá ser um gradiente. Cores à escolha do dese
 	ok - Deverá exibir um erro quando o campo não for preenchido corretamente;
 	ok - Este erro só deve ser exibido quando o campo já foi tocado alguma vez, ou tentou submeter o formulário;
 	- A senha deverá ter um ícone de ocultar/exibir;
-	- Abaixo dos inputs, deverá ter um checkbox de "Lembrar minha senha";
+	ok - Abaixo dos inputs, deverá ter um checkbox de "Lembrar minha senha";
 	ok - Deverá ter um botão de "Login" que seja do mesmo tamanho dos inputs, com bordas arredondadas, e texto centralizado;
 	- O botão "Login" só deve ser habilitado quando os campos forem válidos;
 	- Abaixo do botão "Login", deverá haver um outro botão no formato Link ou Transparente, com a opção "Esqueci minha senha";

@@ -1,10 +1,13 @@
 import React from 'react';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './styles.css';
 import Gftlogo from '../../components/Gftlogo';
 
 
-const Basic = () => (
+const Login = () => (
   <div class="cont">
     <Formik
       initialValues={{ email: '', password: '' }}
@@ -24,8 +27,6 @@ const Basic = () => (
         ) {
           errors.password = 'Invalid password';
         }
-
-
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
@@ -41,24 +42,24 @@ const Basic = () => (
           <h2>LOGIN</h2>
           <Form action="">
             <div class="input-field">
-              <Field type="email" name="email"  
-              placeholder="Email" />
+              <Field type="email" name="email"
+                placeholder="Email" />
               <ErrorMessage name="email" component="div" />
               <div class="underline"></div>
             </div>
             <div class="input-field">
               <Field type="password" name="password"
-              placeholder="password" />
+                placeholder="password" />
               <ErrorMessage name="password" component="div" />
               <div class="underline"></div>
             </div>
             <input type="submit" value="LOGIN" disabled={isSubmitting} />
-
+            <FormGroup>
+              <FormControlLabel control={<Checkbox defaultChecked />} label="Lembrar minha senha" />
+            </FormGroup>
           </Form>
           <div class="footer">
-            <div class="">
               <p>Not a member? <a href="/home">Sign up now</a></p>
-            </div>
           </div>
         </main>
       )}
@@ -66,4 +67,4 @@ const Basic = () => (
   </div>
 );
 
-export default Basic;
+export default Login;
